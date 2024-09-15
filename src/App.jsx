@@ -62,7 +62,40 @@ function App() {
   const [isGameOn, setIsGameOn] = useState(false); // Almacena si el juego debe iniciarse
 
   return (
-    ""
+    
+    <>
+    {
+      isGameOn
+      ?
+      <>
+        <div className='header'> 
+          <h1>Turn {turn}</h1>
+        </div>
+        <div className='container'>
+          {colors.map((item, index) => {
+            return(
+              <div
+              key={index} // para asignar el indice del elemento
+              ref={item.ref} // para hacer referencia al hook userRef
+              className={'pad pad-${index}'} // para crear dinamicamente una clase, ya que cada color tiene una forma diferente y debemos diferenciar las clases
+              style={{backgroundColor: '${item.color}', opacity:0.6}} // para dar estilo en linea asignando el color que toca item.color y darle una opacidad inicial
+              onClick={() => handleClick(index)} // para ejecutar una funcion, "handleclick" pasandole el index para saber que color hemos pulsado, cuando pulsemos el div del coloor
+              > 
+              </div>
+            )
+          })}
+        </div>
+      </>
+      :
+      // Si isGameOn es 'false' mostraremos la pantalla inicial
+      <>
+        <div className='header'>
+          <h1>SUPER SIMON</h1>
+        </div>
+        <button onClick={initGAme}>START</button> {/* onClick para llamar a la funcion initGame que inicializa el juego */}
+      </>
+    }    
+    </>
   )
 }
 
