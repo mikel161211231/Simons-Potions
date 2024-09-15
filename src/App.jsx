@@ -51,6 +51,16 @@ function App() {
   const maxNumber = 3;
   const speedGame = 400;
 
+  // Crear los hooks de estado. (No esta totalmente optimizado)
+  const [sequence, setSequence] = useState([]); // Almacena la secuencia que va generando el juego
+  const [currentGame, setCurrentGame] = useState([]); // Almacena la secuencia que va ejecutando el jugador
+  const [isAllowedToPlay, setIsAllowedToPlay] = useState(false); // Un booleano para permitir pulsar una tecla o no
+  const [speed, setSpeed] = useState(speedGame); // Almacena los cambios de velocidad del juego, ahora se gestinara de manera progresiva
+  const [turn, setTurn] = useState(0); // Almacena el numero del turno que sse esta jugando
+  const [pulses, setPulses] = useState(0); // Almacena el numero de pulsaciones
+  const [success, setSuccess] = useState(0); // Almacena el numero de aciertos
+  const [isGameOn, setIsGameOn] = useState(false); // Almacena si el juego debe iniciarse
+
   return (
     ""
   )
