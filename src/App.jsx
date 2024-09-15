@@ -75,6 +75,22 @@ function App() {
     setTurn(turn +1); // suma un turno
   }
 
+  const handleClick = (index) => {
+    if (isAllowedToPlay) {
+      play({id: colors[index].sound}); // Ejecutar el metodo play de la libreria de sonidos para hacer sonar la musica/sonido, en este caso cogemos del array de colors el color de la posicion introducida(index)
+      // Acceder al elemento para modificar su opacity y su scale.
+      colors[index].ref.current.style.opacity = (1);
+      colors[index].ref.current.style.scale = (0.9);
+      setTimeout(() => {
+        // Acceder al elemento para modificar su opacity y su scale.
+        colors[index].ref.current.style.opacity = (0.5);
+        colors[index].ref.current.style.scale = (1);
+        setCurrentGame([...currentGame, index]);
+        setPulses(pulses +1);
+      }, speed/2);
+    }
+  }
+
   return (
     
     <>
