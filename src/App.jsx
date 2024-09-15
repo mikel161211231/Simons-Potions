@@ -61,6 +61,20 @@ function App() {
   const [success, setSuccess] = useState(0); // Almacena el numero de aciertos
   const [isGameOn, setIsGameOn] = useState(false); // Almacena si el juego debe iniciarse
 
+  // Funcion que inicializa el juego
+  const initGame = () => {
+    randomNumber(); // genera un numero aleatorio para la secuencia
+    setIsGameOn(true); // setea isGameOn a true
+  }
+  
+  // Funcion que genera un numero aleatorio
+  const randomNumber = () => {
+    setIsAllowedToPlay(false); // setea isAllowedToPlay a false
+    const randomNumber = Math.floor(Math.random()*(maxNumber - minNumber +1) + minNumber); // Genera un numero aleatorio en base a las constantes 
+    setSequence([...sequence, randomNumber]); // setea la sequencia al final añadiendo el numero aleatorio al final de la secuencia ya existente
+    setTurn(turn +1); // suma un turno
+  }
+
   return (
     
     <>
@@ -92,11 +106,14 @@ function App() {
         <div className='header'>
           <h1>SUPER SIMON</h1>
         </div>
-        <button onClick={initGAme}>START</button> {/* onClick para llamar a la funcion initGame que inicializa el juego */}
+        <button onClick={initGame}>START</button> {/* onClick para llamar a la funcion initGame que inicializa el juego */}
       </>
     }    
     </>
   )
 }
+
+
+
 
 export default App
