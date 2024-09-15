@@ -104,8 +104,8 @@ function App() {
           if(index) colors[index].ref.current.style.opacity = (0.5);
           setIsGameOn(false);
         }, speed * 2);
+        setIsAllowedToPlay(false);
       }
-      setIsAllowedToPlay(false);
     }
   }, [pulses]);
 
@@ -136,6 +136,22 @@ function App() {
     }
   }, [success]);
 
+  // UseEffect con dependencia de sequence
+  useEffect(() => {
+    if (!isAllowedToPlay) {
+      sequence.map((item, index) => {
+        setTimeout(() => {
+          play({id: colors[item].sound});
+          colors[item].ref.current.style.opacity = (1);
+          setTimeout(() => {
+            colors[item].ref.current.style.opacity = (0.5);
+          }, speed/2);
+        }, speed * index);
+      })
+    }
+    setIsAllowedToPlay(true);
+  }, [sequence]);
+
   return (
     
     <>
@@ -152,8 +168,8 @@ function App() {
               <div
               key={index} // para asignar el indice del elemento
               ref={item.ref} // para hacer referencia al hook userRef
-              className={'pad pad-${index}'} // para crear dinamicamente una clase, ya que cada color tiene una forma diferente y debemos diferenciar las clases
-              style={{backgroundColor: '${item.color}', opacity:0.6}} // para dar estilo en linea asignando el color que toca item.color y darle una opacidad inicial
+              className={`pad pad-${index}` } // para crear dinamicamente una clase, ya que cada color tiene una forma diferente y debemos diferenciar las clases
+              style={{backgroundColor: `${item.color}`, opacity:0.6}} // para dar estilo en linea asignando el color que toca item.color y darle una opacidad inicial
               onClick={() => handleClick(index)} // para ejecutar una funcion, "handleclick" pasandole el index para saber que color hemos pulsado, cuando pulsemos el div del coloor
               > 
               </div>

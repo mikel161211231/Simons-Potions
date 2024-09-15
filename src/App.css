@@ -46,13 +46,13 @@
 }
 
 .pad-2{
-  border-bottom-right-radius: 300px;
+  border-bottom-left-radius: 300px;
   border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .pad-3{
-  border-bottom-left-radius: 300px;
+  border-bottom-right-radius: 300px;
   border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
