@@ -91,6 +91,7 @@ function App() {
     }
   }
 
+  // UseEffect con dependencia pulses
   useEffect(() => {
     if (pulses > 0) {
       if (Number(sequence[pulses -1]) === Number(currentGame[pulses -1])) {
@@ -107,6 +108,20 @@ function App() {
       setIsAllowedToPlay(false);
     }
   }, [pulses]);
+
+
+  // UseEffect con dependencia isGameOn, si isGameOn es false reinici todos los valores
+  useEffect(() => {
+    if (!isGameOn) {
+      setSequence([]);
+      setCurrentGame([]);
+      setIsAllowedToPlay(false);
+      setSpeed(speedGame);
+      setSuccess(0);
+      setPulses(0);
+      setTurn(0);
+    }
+  }, [isGameOn]);
 
   return (
     
