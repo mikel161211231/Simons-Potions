@@ -123,6 +123,19 @@ function App() {
     }
   }, [isGameOn]);
 
+  // UseEffect con dependencia de success
+  useEffect(() => {
+    if (success === sequence.length && success > 0) {
+      setSpeed(speed - sequence.length*2);
+      setTimeout(() => {
+        setSuccess(0);
+        setPulses(0);
+        setCurrentGame([]);
+        randomNumber();
+      }, 500);
+    }
+  }, [success]);
+
   return (
     
     <>
