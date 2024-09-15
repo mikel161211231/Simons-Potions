@@ -46,6 +46,11 @@ function App() {
     },
   ];
 
+  // Declarar las constantes para los calculos de numeros aleatorios y la velocidad inicial del juego
+  const minNumber = 0;
+  const maxNumber = 3;
+  const speedGame = 400;
+
   return (
     ""
   )
