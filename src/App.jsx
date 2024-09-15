@@ -9,9 +9,9 @@ function App() {
   const blueRef = useRef(null);
   const yellowRef = useRef(null);
   const greenRef = useRef(null);
-  const reRef = useRef(null);
+  const redRef = useRef(null);
 
-  // Initialize the library of sound with the reference to sprite.mp3
+  // Inicializar la libreria de sonnidos y hacer referencia al sprite.mp3 importado previamente
   const [play] = useSound(simon, {
     sprite: {
       one: [0, 500],
@@ -21,6 +21,30 @@ function App() {
       error: [4000, 500],
     }
   });
+
+  // Declara el array de objetos para los colores, sus referencias al DOM y los sonidos correspondientes
+  const colors = [
+    {
+      color: '#FAF303',
+      ref: yellowRef,
+      sound: 'one',
+    },
+    {
+      color: '#030AFA',
+      ref: blueRef,
+      sound: 'two',
+    },
+    {
+      color: '#FA0E03',
+      ref: redRef,
+      sound: 'three',
+    },
+    {
+      color: '#0AFA03',
+      ref: greenRef,
+      sound: 'four',
+    },
+  ];
 
   return (
     ""
