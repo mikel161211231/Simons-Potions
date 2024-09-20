@@ -2,6 +2,12 @@ import { useState, useEffect, useRef } from 'react';
 import useSound from 'use-sound';
 import simon from "./assets/sounds/sprite.mp3";
 import './App.css'
+import game from "./assets/images/game.jpeg";
+import door from "./assets/images/door.jpeg";
+import red from "./assets/images/red-potion.png";
+import blue from "./assets/images/blue-potion.png";
+import green from "./assets/images/green-potion.png";
+import yellow from "./assets/images/yellow-potion.png";
 
 function App() {
   
@@ -63,7 +69,9 @@ function App() {
 
   // Funcion que inicializa el juego
   const initGame = () => {
+    
     randomNumber(); // genera un numero aleatorio para la secuencia
+    setTurn(turn +1); // suma un turno
     setIsGameOn(true); // setea isGameOn a true
   }
   
@@ -72,7 +80,7 @@ function App() {
     setIsAllowedToPlay(false); // setea isAllowedToPlay a false
     const randomNumber = Math.floor(Math.random()*(maxNumber - minNumber +1) + minNumber); // Genera un numero aleatorio en base a las constantes 
     setSequence([...sequence, randomNumber]); // setea la sequencia al final añadiendo el numero aleatorio al final de la secuencia ya existente
-    setTurn(turn +1); // suma un turno
+    
   }
 
   const handleClick = (index) => {
@@ -96,6 +104,7 @@ function App() {
     if (pulses > 0) {
       if (Number(sequence[pulses -1]) === Number(currentGame[pulses -1])) {
         setSuccess(success +1);
+        
       } else {
         const index = sequence[pulses -1];
         if (index) colors[index].ref.current.style.opacity = (1);
@@ -120,6 +129,13 @@ function App() {
       setSuccess(0);
       setPulses(0);
       setTurn(0);
+      document.body.style.backgroundImage = `url(${door})`;
+    }else{      
+      document.body.style.backgroundImage = `url(${game})`;
+      document.body.style.backgroundSize = 'contain'; 
+      document.body.style.backgroundSize = 'cover';
+      document.body.style.backgroundRepeat = 'no-repeat';
+     
     }
   }, [isGameOn]);
 
@@ -131,7 +147,12 @@ function App() {
         setSuccess(0);
         setPulses(0);
         setCurrentGame([]);
-        randomNumber();
+        let howMany = Math.floor(sequence.length/5) +1;
+        for (let i = 0; i < howMany; i++) {
+          randomNumber();         
+        }
+        setTurn(turn +1); // suma un turno
+        setSpeed(speed*(1.05));
       }, 500);
     }
   }, [success]);
@@ -181,9 +202,9 @@ function App() {
       // Si isGameOn es 'false' mostraremos la pantalla inicial
       <>
         <div className='header'>
-          <h1>SUPER SIMON</h1>
+          <h1>{"SUPER     SIMON"}</h1>
         </div>
-        <button onClick={initGame}>START</button> {/* onClick para llamar a la funcion initGame que inicializa el juego */}
+        <button onClick={initGame} className='btn-st'>START</button> {/* onClick para llamar a la funcion initGame que inicializa el juego */}
       </>
     }    
     </>

@@ -4,6 +4,37 @@
   margin: 0 auto;
   padding:  2rem;
   text-align: center;
+  
+}
+@font-face {
+  font-family: kaotic;
+  src: url("./assets/fonts/EnchantedLand.otf");
+}
+
+*{
+  font-family: "kaotic";
+  color: #fc4b08;
+  text-shadow: whitesmoke;
+  -webkit-text-stroke-width: 1px; /* adjust width as needed */
+  -webkit-text-stroke-color: #000; /* adjust color as needed */
+}
+
+.btn-st{
+  
+    font-family: "kaotic";
+    color: #fc4b08;
+    text-shadow: whitesmoke;
+    -webkit-text-stroke-width: 0.02px; /* adjust width as needed */
+    -webkit-text-stroke-color: #000; /* adjust color as needed */
+
+}
+
+body {
+  background-image: url("./assets/images/door.jpeg");
+  background-repeat: no-repeat; /* ensure the image is only shown once */
+  background-size: contain; /* scale the image to fit the container */
+  background-position: center; /* center the image horizontally and vertically */
+  background-size: cover;
 }
 
 .container {
@@ -11,7 +42,7 @@
   flex-wrap: wrap;
   width: 600px;
   height: 600px;
-  background-color: black;
+  background-color: trans;
   padding: 30px;
   border-radius: 320px;
 }
@@ -34,6 +65,7 @@
 }
 
 .pad-0{
+  
   border-top-left-radius: 300px;
   border-top-right-radius: 20px;
   border-bottom-left-radius: 20px;
